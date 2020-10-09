@@ -9,7 +9,7 @@ class YoloLayer(Layer):
                     grid_scale, obj_scale, noobj_scale, xywh_scale, class_scale, 
                     **kwargs):
         # make the model settings persistent
-        self.ignore_thresh  = ignore_thresh  # config['train']['ignore_thresh']，0.5
+        self.ignore_thresh  = ignore_thresh  # config['train']['ignore_thresh']，0.5  #threshold value 阈值
         self.warmup_batches = warmup_batches # config['train']['warmup_epochs'] * (config['train']['train_times'] * len(train_generator))
         self.anchors        = tf.constant(anchors, dtype='float', shape=[1,1,1,3,2]) # 每个尺度的特征图设置3个先验框，比如[[17,18],[28,24],[36,34]]
         self.grid_scale     = grid_scale     # config['train']['grid_scales']，3个尺度的特征图的loss的权重
